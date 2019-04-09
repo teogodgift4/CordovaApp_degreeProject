@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script> 
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="/resources/demos/style.css">
+
+        <script src="js/libs/jquery-ajaxtransport-xdomainrequest/jquery.xdomainrequest.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src="js/libs/jqueryui/jquery-ui.js" type="text/javascript"></script>
+        <link href="js/libs/jqueryui/css/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"> 
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+        <script src="js/timepicker.js" type="text/javascript"></script>
+        <link href="css/timepicker.css" rel="stylesheet" type="text/css"/> 
+        <link href="css/dcalendar.picker.css" rel="stylesheet" type="text/css"/>
+        <script>
+            $(function () {
+                $("#adminTabs").tabs();
+                $('#ShowService').hide();
+                $('#showStaff').hide();
+                $('#addStaff').hide();
+                $('#addStaff2').hide();
+                $('#AddStaffButton').click(function () {
+                    $('#addStaff').toggle(1000);
+                    $('#addStaff2').toggle(1000);
+                });
+                $('#deleteStaff').hide();
+                $('#DeleteStaffButton').click(function () {
+                    $('#deleteStaff').toggle(1000);
+                });
+                $('#AddService').hide();
+                $('#DeleteService').hide();
+                $('#AddServiceButton').click(function () {
+                    $('#AddService').toggle(1000);
+                });
+                
+                $('#AddStaticService').hide();
+                $('#AddStaticServiceButton').click(function (){
+                    $('#AddStaticService').toggle(1000);
+                });
+                
+                $('#DeleteServiceButton').click(function () {
+                    $('#DeleteService').toggle(1000);
+                });
+                $('#ShowServiceButton').click(function () {
+                    $('#ShowService').toggle(1000);
+                });
+
+                $(document).ready(function () {
+                    $('input.timepicker').timepicker({
+                        timeFormat: 'HH:mm:ss',
+                        interval: 60,
+                        minTime: '01',
+                        maxTime: '23:00',
+                        startTime: '01:00',
+                        dynamic: false,
+                        dropdown: true,
+                        scrollbar: true
+                    });
+                });
+
+                $(document).ready(function () {
+                    $('#formWorkHours').hide();
+                    $('#pastDates').hide();
+                    $('#futureDates').hide();
+                });
+
+
+                $('#WorkHoursButton').click(function () {
+                    $('#formWorkHours').toggle(3000);
+                });
+
+                $('#pastDatesButton').click(function () {
+                    $('#pastDates').show();
+                });
+
+
+                $('#futureDatesButton').click(function () {
+                    $('#futureDates').toggle(3000);
+                });
+
+
+
+            });
+
+            $(document).ready(function () {
+                $('input.timepicker').timepicker({
+                    hourText: 'Hours',
+                    timeOnly: true,
+                    minutes: {manual: [0]},
+                    amPmText: ['AM', 'PM'],
+                    timeSeparator: ':'
+
+                });
+
+            });
+
+            $(function () {
+                $("#slider-range-max").slider({
+                    range: "max",
+                    min: 18,
+                    max: 70,
+                    value: 1,
+                    slide: function (event, ui) {
+                        $("#TrainAge").val(ui.value);
+                    }
+                });
+                $("#TrainAge").val($("#slider-range-max").slider("value"));
+            });
+
+            $(function () {
+                $("#slider-range-dur").slider({
+                    range: "max",
+                    min: 1,
+                    max: 8,
+                    value: 1,
+                    slide: function (event, ui) {
+                        $("#addDuration").val(ui.value);
+                        }
+                });
+                $("#addDuration").val($("#slider-range-dur").slider("value"));
+              });
+              
+              $(function () {
+                $("#slider-range-stDur").slider({
+                    range: "max",
+                    min: 1,
+                    max: 8,
+                    value: 1,
+                    slide: function (event, ui) {
+                        $("#addStaticDuration").val(ui.value);
+                        }
+                });
+                $("#addStaticDuration").val($("#slider-range-stDur").slider("value"));
+              });
+        </script> 
+    </head>
+    <body>
+        <div class="app">
+            <div data-role="page">
+                <div data-role="header" class="ui-content header"><h1>Administrator</h1>
+                </div>
+                <div data-role="main" class="ui-content HomePage">
+                    <div id="adminTabs">
+                        <ul>
+                            <li><a href="#Services">Services</a></li>
+                            <li><a href="#Staff">Staff</a></li>
+                            <li><a href="#Control">Control</a></li>
+                            <li><a href="#logoutadmin">Log out</a></li>
+                        </ul>
+                        <div id="Services">
+                            <input type="button" value="Show Services" onclick="showServices();" id="ShowServiceButton"><br>
+                            <div id="ShowService"></div>
+                            <input type="button" value="Add Service" onclick="showTrainers();" id="AddServiceButton"><br>
+                            <div id="AddService">
+                                <form>
+                                    <input type="text" id="addedService" placeholder="Service"><br/>
+                                    <textarea id="addDescription" placeholder="Description" rows="6" cols="50"></textarea><br/>
+                                    <input type="text" readonly="true" id="addDuration" placeholder="Duration"><br/>
+                                    <div id="slider-range-dur" readonly="true"></div>
+                                    <input type="button" value="Add" onclick="addServe();">
+                                </form>
+                            </div>
+                            <input type="button" value="Add Static Service"  id="AddStaticServiceButton"><br>
+                            <div id="AddStaticService">
+                                <form>
+                                    <input type="text" id="addedStaticService" placeholder="Service"><br/>
+                                    <textarea id="addStaticDescription" placeholder="Description" rows="6" cols="50"></textarea><br/>
+                                    <input type="text" readonly="true" id="addStaticDuration" placeholder="Duration"><br/>
+                                    <div id="slider-range-stDur" readonly="true"></div>
+                                    <input type="button" onclick="addStaticServe();" value="Add">
+                                </form>
+                            </div>
+                            <input type="button" value="Delete Service" onclick="showDelServ();"  id="DeleteServiceButton"><br>
+                            <div id="DeleteService">
+                                <div id="msgdelServ"></div>
+                                <form>
+                                    <input type="button" value="Delete" onclick="delService();">
+                                </form>
+                            </div>
+                        </div>
+                        <div id="Staff">
+                            <input type="button" value="Show Current staff" onclick="showStaff();" id="currentStaffButton"><br/>
+                            <div id="showStaff"></div>
+                            <input type="button" value="Delete Current staff" onclick="showDelStaff();" id="DeleteStaffButton"><br/>
+                            <div id="deleteStaff">
+                                <div id="msgdelStaff"></div>
+                                <input type="button" value="Delete" onclick="delStaff();" id="deleteStaffBut"><br>
+                            </div>
+                            <input type="button" value="Add new staff" onclick="ShowPrograms();" id="AddStaffButton"><br/>
+                            <div id="addStaff">
+                                <form id="addStaffForm">
+                                    <input type="text" id="TrainUserName" placeholder="Username"><br>
+                                    <input type="text" id="TrainName" placeholder="Name"><br>
+                                    <input type="text" id="TrainSurName" placeholder="Surname"><br>
+                                    <input type="password" id="TrainPass" placeholder="password"><br>
+                                    <input type="text" readonly="true" id="TrainAge" placeholder="Age"><br>
+                                    <div readonly="true" id="slider-range-max"></div>
+                                    <div id="addStaff2"></div>
+                                    <input type="button" value="submit" onclick="addStaff();" id="addStaffButton"><br>
+                                </form> 
+                            </div>
+                        </div>
+                        <div id="Control">
+                            <div id="WorkHours">
+                                <input type="button" value="Workhours control" id="WorkHoursButton"/><br>
+                                <form id="formWorkHours">
+                                    <input class="timepicker" readonly="true" type="text"  id="MondayStr" placeholder="Monday Start"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="MondayFinn" placeholder="Monday Finnish"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="TuesdayStr" placeholder="Tuesday Start"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="TuesdayFinn" placeholder="Tuesday Finnish"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="WednesdayStr" placeholder="Wednesday Start"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="WednesdayFinn" placeholder="Wednesday Finnish"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="ThirsdayStr" placeholder="Thirsday Start"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="ThirsdayFinn" placeholder="Thirsday Finnish"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="FridayStr" placeholder="Friday Start"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="FridayFinn" placeholder="Friday Finnish"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="SaturdayStr" placeholder="Saturday Start"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="SaturdayFinn" placeholder="Saturday Finnish"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="SundayStr" placeholder="Sunday Start"><br>
+                                    <input class="timepicker" readonly="true" type="text" id="SundayFinn" placeholder="Sunday Finnish"><br>
+                                    <input type="button" value="Add" onclick="addWorkH();" id="addWorkHours"><br>
+                                </form> 
+                            </div>
+                        
+                            <input type="button" value="Past Dates" onclick="showPastDates();" id="pastDatesButton"/><br>
+                            <div id="pastDatesTrainers"></div>
+                            <div id="pastDates"></div>
+                            <input type="button" value="Future Dates" onclick="showFutureDates();" id="futureDatesButton"/><br>
+                            <div id="futureDates"></div>
+                        </div>
+                        <div id = "logoutadmin">
+                            <input type="button" onclick='logout();' value="logout">  
+                        </div>
+                        <div id="Bye"></div>
+                    </div>
+                </div>
+                <div data-role="footer" class="ui-content footer">
+                </div>
+            </div>
+        </div>
+        <script src="js/timepicker.js" type="text/javascript"></script>
+    </body>
+</html>

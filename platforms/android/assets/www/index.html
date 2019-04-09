@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script> 
+        <script src="js/libs/jquery-ajaxtransport-xdomainrequest/jquery.xdomainrequest.min.js" type="text/javascript"></script>
+        <script src="js/libs/jqueryui/jquery-ui.js" type="text/javascript"></script>
+        <link href="js/libs/jqueryui/css/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+        <title>OnLineGym</title>
+    </head>
+    <body>
+        <div class="app">
+            <div data-role="page" id="loginPage">
+                <div data-role="header" class="ui-content header">
+                    <div id="loginMention"></div>
+                    <h1>OnLineGym.com</h1>
+                    <p>Welcome to gym</p>
+                </div>
+                <div data-role="main" class="ui-content HomePage">
+                    <h1>Login to enjoy our services</h1>
+                    <form>
+                        <input type="text" name="UserName" id="username" placeholder="username">
+                        <input type="password" name="Password" id="password" placeholder="password">
+                        <input type="button" value="Submit" id="loginButton">
+                    </form>
+                    <a href='#UsersSignUp' id="signUpButton"><p>Don't still a member?</p></a>  
+                </div>
+                <div data-role="footer" id="loginFooter">  
+
+                </div>
+            </div>
+            <div data-role='page' id='UsersSignUp' >
+                <div data-role='header' class='ui-content header'>
+                    <div id="mentionDB"></div>
+                    <div id="detailsUsersSignUp">
+                        <h1>Sign up for free</h1>
+                        <p>please fill out the form</p>
+                    </div>
+                </div>
+                <div data-role='main' class="ui-content HomePage">
+
+                    <form class = "ui-field-contain"> 
+                        <input type='text' id='user' placeholder="username" required><br/>
+                        <input type='text' id='name' name='name' placeholder="name" required><br/>
+                        <input type='text' id='surname' name='surname' placeholder="surname" required><br/>
+                        <input type='text' id='pass' name='password' placeholder="password" required><br/>
+                        <input type='text' id='phone' name='phone' placeholder="phone" required><br/>
+                        <input type='text' id='address' name='address' placeholder="address" required><br/>
+                        <input type='text' id='country' name='country' placeholder="country" required><br/>
+                        <input type='text' id='city' name='city' placeholder="city" required><br/> 
+                        <input type='button' value='submit' id="SignUpAjaxButton">
+                    </form>
+                </div>
+                <div data-role='footer' class="ui-content footer" id="SignUpFooter">
+                    <button class="ui-btn ui-corner-all ui-btn-icon-left ui-icon-back" id="backToLoginPageButton">Back</button>
+                    <p>&copy; OnLineGym.com</p>
+                    <p>Created by <a href='mailto:teo.godgift4@gmail.com'>Teo Theodoridis</a></p>
+                </div>
+            </div>
+        </div> <!-- end app class -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

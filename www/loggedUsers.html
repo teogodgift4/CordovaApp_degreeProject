@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script> 
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="/resources/demos/style.css">
+
+        <script src="js/libs/jquery-ajaxtransport-xdomainrequest/jquery.xdomainrequest.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src="js/libs/jqueryui/jquery-ui.js" type="text/javascript"></script>
+        <link href="js/libs/jqueryui/css/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"> 
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+        <script src="js/timepicker.js" type="text/javascript"></script>
+        <link href="css/timepicker.css" rel="stylesheet" type="text/css"/> 
+        <link href="css/dcalendar.picker.css" rel="stylesheet" type="text/css"/>
+        <script>
+
+            $(function () {
+                $("#UsersTabs").tabs();
+            });
+            $(function () {
+                $("input.radio").checkboxradio();
+            });
+
+            $(function () {
+                $('#chooseDate').dcalendarpicker();
+                $('#chooseStaticDate').dcalendarpicker();
+                $('#selTrain').hide();
+                 $('#checkStaticButton').hide();
+                $('#ChooseHour').hide();
+                $('#contDatesButton').hide();
+                $('#setDatesButton').hide();
+                $('#checkButton').hide();
+                $('#datesTitle').hide();
+                $('#chooseDate').hide();
+                $('#datesForm').hide();
+                $('#datesButton').on('click', function () {
+                    $('#datesForm').slideDown(3000);
+                });
+            });
+
+            $(function () {
+                $('#selTrain').show();
+                $('#selTrain').on('click', function () {
+                    $('#datesTitle').slideDown(3000);
+                    $('#chooseDate').slideDown(3000);
+                    $('#contDatesButton').slideDown(3000);
+
+                });
+
+            });
+
+            $(function () {
+                $('#checkButton').on('click', function () {
+                    $('#Personal').hide(3000);
+                });
+            });
+
+           /* $(document).ready(function () {
+                 $('#staticChooseHour').timepicker({
+                     hourText: 'Hours',
+                    timeOnly: true,
+                    minutes: {manual: [0]},
+                    amPmText: ['AM', 'PM'],
+                    timeSeparator: ':',
+                onHourShow: OnHourShowCallbackStatic
+                 });   
+                
+                }); */
+                /*
+                $(document).ready(function (){
+                    $('#ChooseHour').timepicker({
+                    hourText: 'Hours',
+                   timeOnly: true,
+                    minutes: {manual: [0]},
+                    amPmText: ['AM', 'PM'],
+                    timeSeparator: ':',
+                    onHourShow: OnHourShowCallback
+                });   
+                
+                
+            
+    });   */  
+            
+            </script>
+    </head>
+    <body onload="showProfile();">
+        <div class="app">
+            <div data-role="page">
+                <div data-role="header" class="ui-content header">
+                    <div><h1>Member's Area</h1>
+
+                    </div>
+                </div>
+                <div data-role="main" class="ui-content HomePage">
+                    <div id="UsersTabs">
+                        <ul>
+                            <li><a href="#Profile">Profile</a></li>
+                            <li><a href="#Personal" onclick="optionsButtonClick();">Personal</a></li>
+                            <li><a href="#Static" onclick="staticButtonClick();">Static</a></li>
+                            <li><a href="#Help">Help</a></li>
+                            <li><a href="#logoutTab">Log out</a></li>
+                        </ul>
+                        <div id = "Profile">
+                            <div id="profileDetails">
+
+                            </div>
+                        </div>
+                        <div id = "Personal" >
+                            <p>Select the program:</p>
+                            <div class="ui-field-contain" id="chooseRoutine">
+                            </div>
+                            <p>Select the trainer:</p>
+                            <input type="button" value="Select Trainer" id="selTrain" onclick="selectProgram();">
+                            <div class="ui-field-contain" id="chooseTrainer">
+                            </div> 
+                            <div class="ui-field-contain">
+                                <p id="datesTitle">Choose your dates now:</p>
+                                <div id="setDateId"></div>
+                                <input type="text"   id="chooseDate"   placeholder="choose the day"/><br>
+                                <input type='button' id="contDatesButton" onclick="controlDates();" value='control the dates' /><br>
+
+                                <div id="deb"></div>
+                               
+                                <input type="button" id="checkButton"  value="check it!!!" onclick="check();" /><br>
+                                <div id="comfirmMess"></div>
+                            </div>
+                        </div>
+                        <div id="Static">
+                          <p>Select the static program you want:</p>
+                            <div class="ui-field-contain" id="chooseStaticRoutine">
+                            </div>
+                               <div class="ui-field-contain">
+                                <p id="datesTitle">Choose your dates now:</p>
+                                <div id="setStaticDateId"></div>
+                                <input type="text"   id="chooseStaticDate"  placeholder="choose the day"/><br>
+                                <input type="button" id="nextStaticBut" value="next" onclick="setStaticDates();" /><br>
+                                <div id="showStaticDates"></div>
+                                <input type="button" id="checkStaticButton" value="check it!!!" onclick="staticCheck();" /><br>
+                                <div id="staticComfirmMess"></div>
+                            </div>  
+                        </div>
+                        <div id = "Help">
+                            <a href="#emailPopUp" data-rel="popup" data-transition="pop"> <img src="img/Email.png" style="width:64px;"/></a>
+                            <div data-role="popup" id="emailPopUp">Email: onlineGym@gmail.com</div>
+                            <br>
+                            <a href="#phonePopUp" data-rel="popup" data-transition="pop"> <img src="img/phone.png" style="width:64px;"/></a>
+                            <div data-role="popup" id="phonePopUp">Tel: +30 23210 111111</div>
+                            <br>
+                        </div>
+                        <div id = "logoutTab">
+                            <input type="button" class="ui-btn ui-btn-corner-all ui-btn" onclick='logout();' value="logout">  
+                        </div>
+                        <div id="Bye"></div>
+                    </div>
+                </div>
+                <div data-role="footer" class="ui-content footer">
+
+                </div>
+            </div>
+        </div>
+        <script src="js/timepicker.js" type="text/javascript"></script>
+        <script src="js/dcalendar.picker.js" type="text/javascript"></script>
+    </body>
+</html>

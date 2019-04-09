@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script> 
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="js/libs/jquery-ajaxtransport-xdomainrequest/jquery.xdomainrequest.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src="js/libs/jqueryui/jquery-ui.js" type="text/javascript"></script>
+        <link href="js/libs/jqueryui/css/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"> 
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+        <script>
+            $(document).ready(function (){
+            $('#TrainersTabs').tabs();
+            
+            $('#futureGymDates').hide();
+            $('#futureGymDatesButton').click(function () {
+                    $('#futureGymDates').toggle(1000);
+                });
+                
+                $('#pastGymDates').hide();
+            $('#pastGymDatesButton').click(function () {
+                    $('#pastGymDates').toggle(3000);
+                });
+                
+                $('#myPastDates').hide();
+            $('#myPastDatesButton').click(function () {
+                    $('#myPastDates').toggle(1000);
+                });
+                
+                $('#myFutureDates').hide();
+            $('#myFutureDatesButton').click(function () {
+                    $('#myFutureDates').toggle(1000);
+                });
+        });
+        </script>
+    </head>
+    <body>
+        <div data-role="page">
+                <div data-role="header" class="ui-content header"><h1>Trainer's Area</h1>
+                </div>
+                <div data-role="main" class="ui-content HomePage">
+        <div id="TrainersTabs">
+            <ul>
+                <li><a href="#Gym">Gym's Dates</a></li>
+                <li><a href="#Trainer">My Dates</a></li>
+                <li><a href="#TrainerOut">Log Out</a></li>
+            </ul>
+        
+                    <div id="Gym">
+                        <input type="button" id="pastGymDatesButton"  value="Past Dates" onclick="showGymPastDates()"><br>
+                        <div id="pastGymDates"></div>
+                        <input type="button" id="futureGymDatesButton" value="Future Dates" onclick="showGymFutureDates()"><br>
+                        <div id="futureGymDates"></div>
+                    </div>
+            <div id="Trainer">
+                <input type="button" id="myPastDatesButton" value="Past Dates" onclick="showMyPastDates()"><br>
+                <div id="myPastDates"></div>
+                        <input type="button" id="myFutureDatesButton" value="Future Dates" onclick="showMyFutureDates()"><br>
+                        <div id="myFutureDates"></div>
+            </div>
+            <div id="TrainerOut">
+                <input type="button" value="log out" onclick="logout()">
+            </div>
+        </div>
+                    </div>
+            <div data-role="footer" class="ui-content footer">
+                </div>           
+            </div>
+    </body>
+</html>
